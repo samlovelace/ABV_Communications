@@ -32,6 +32,19 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 ament_export_targets(${PROJECT_NAME}Targets HAS_LIBRARY_TARGET)
 ament_export_dependencies(rclcpp abv_idl)
 
+#### Build the examples #### 
+## Thruster Control example
+add_executable(thruster_control_ex ${CMAKE_CURRENT_LIST_DIR}/examples/thruster_control/main.cpp)
+ament_target_dependencies(thruster_control_ex rclcpp abv_idl)
+# Install the executables
+install(TARGETS
+  thruster_control_ex
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# TODO:
+## Pose Control example ###
+
 # Link against the abv_idl interface
 #target_link_libraries(${PROJECT_NAME} PUBLIC rclcpp abv_idl)
 
