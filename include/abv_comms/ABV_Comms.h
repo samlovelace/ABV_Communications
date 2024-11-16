@@ -12,7 +12,7 @@ public:
     void spinNode();
     static bool shutdown();
 
-    void publishCommand(const std::vector<double>& aCommand);
+    void publishCommand(const std::string& aCommandType, const std::vector<float>& aCommand);
 
     enum class CONTROL_MODE {
         THRUSTER,

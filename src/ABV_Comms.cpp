@@ -14,6 +14,7 @@ ABV_Comms::~ABV_Comms()
 
 bool ABV_Comms::init()
 {
+    printf("ABV_Comms Library Initializing ROS2 Communications\n"); 
     rclcpp::init(0, nullptr);
 
     if(!rclcpp::ok())
@@ -95,7 +96,7 @@ void ABV_Comms::responseCallback(const abv_idl::msg::AbvResponse::SharedPtr aMsg
     }
 }
 
-void ABV_Comms::publishCommand(const std::vector<double>& aCommand)
+void ABV_Comms::publishCommand(const std::string& aCommandType, const std::vector<float>& aCommand)
 {
     // if the command size is not 3, then it is invalid
     if(3 != aCommand.size())
@@ -103,6 +104,8 @@ void ABV_Comms::publishCommand(const std::vector<double>& aCommand)
         printf("Invalid command size. Expected 3, got %d\n", static_cast<int>(aCommand.size()));
         return;
     }
+
+    mCommand.type = aCommandType; 
 
     // set the values in the data type to be published
     mCommand.data.x = aCommand[0];

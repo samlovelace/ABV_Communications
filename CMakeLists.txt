@@ -35,7 +35,9 @@ ament_export_dependencies(rclcpp abv_idl)
 #### Build the examples #### 
 ## Thruster Control example
 add_executable(thruster_control_ex ${CMAKE_CURRENT_LIST_DIR}/examples/thruster_control/main.cpp)
+target_link_libraries(thruster_control_ex abv_comms)
 ament_target_dependencies(thruster_control_ex rclcpp abv_idl)
+
 # Install the executables
 install(TARGETS
   thruster_control_ex
