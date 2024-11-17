@@ -22,17 +22,6 @@ int main()
     int counter = 0; 
     while(true)
     {   
-        if(counter > 10)
-        {
-            printf("Sending idle cmd\n"); 
-            cmdType = "idle"; 
-        }
-        
-        if (counter > 20)
-        {
-            printf("sending pose cmd\n"); 
-            cmdType = "pose"; 
-        }
         abv_comms->publishCommand(cmdType, controlInput); 
 
         counter++; 
