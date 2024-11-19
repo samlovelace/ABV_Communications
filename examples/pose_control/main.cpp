@@ -17,13 +17,14 @@ int main()
     std::unique_ptr<ABV_Comms> abv_comms = std::make_unique<ABV_Comms>(); 
     abv_comms->spinNode(); 
 
-    std::string cmdType = "Thruster"; 
+    std::string cmdType = "Pose"; 
     std::vector<float> controlInput = {1.0, 0.0, 0.0}; 
     int counter = 0; 
+
+    abv_comms->publishCommand(cmdType, controlInput); 
+    
     while(true)
     {   
-        abv_comms->publishCommand(cmdType, controlInput); 
-
         counter++; 
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
     }

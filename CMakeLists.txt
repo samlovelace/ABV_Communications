@@ -46,6 +46,15 @@ install(TARGETS
 
 # TODO:
 ## Pose Control example ###
+add_executable(pose_control_ex ${CMAKE_CURRENT_LIST_DIR}/examples/pose_control/main.cpp)
+target_link_libraries(pose_control_ex abv_comms)
+ament_target_dependencies(pose_control_ex rclcpp abv_idl)
+
+# Install the executables
+install(TARGETS
+  pose_control_ex
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 # Link against the abv_idl interface
 #target_link_libraries(${PROJECT_NAME} PUBLIC rclcpp abv_idl)
